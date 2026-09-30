@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Дети Улицы — Центр досуга и спорта для трудных детей и подростков</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-soft: #0a0a0a;
+      --bg-card: #111111;
+      --border: #222222;
+      --text: #ffffff;
+      --muted: #888888;
+      --muted-light: #aaaaaa;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .header-nav a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+
+    .header-nav a:hover {
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+      border: 1px solid #fff;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-ghost:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255, 255, 255, 0.04), transparent),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255, 255, 255, 0.02), transparent);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, #000 10%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, #000 10%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted-light);
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 8vw, 96px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .outline {
+      -webkit-text-stroke: 2px #fff;
+      color: transparent;
+      text-shadow: none;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--muted-light);
+      max-width: 620px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+      font-weight: 400;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    }
+
+    .scroll-hint-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, #fff, transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+      border-left: 2px solid #fff;
+      padding-left: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .section-title .outline {
+      -webkit-text-stroke: 1.5px #fff;
+      color: transparent;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--muted-light);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      color: var(--muted-light);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg-soft);
+      transition: border-color 0.4s, transform 0.4s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .activity-card {
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--bg-soft);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .activity-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-6px);
+      background: #151515;
+    }
+
+    .activity-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .activity-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.4s;
+    }
+
+    .activity-card:hover .activity-icon {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    .activity-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .activity-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .activity-desc {
+      font-size: 14px;
+      color: var(--muted-light);
+      line-height: 1.65;
+    }
+
+    .gallery-section {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 60px;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      border-color: rgba(255, 255, 255, 0.25);
+      z-index: 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+      transition: filter 0.5s, transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+      filter: grayscale(0%) contrast(1);
+      transform: scale(1.05);
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--muted);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .gallery-placeholder svg {
+      width: 40px;
+      height: 40px;
+      stroke: rgba(255, 255, 255, 0.2);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .gallery-placeholder span {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .gallery-item:nth-child(1) { grid-row: span 2; grid-column: span 2; }
+    .gallery-item:nth-child(1) .gallery-placeholder svg { width: 60px; height: 60px; }
+
+    .contact-section {
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .contact-card {
+      padding: 40px 28px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--bg-soft);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-6px);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .contact-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .contact-value a {
+      transition: opacity 0.3s;
+    }
+
+    .contact-value a:hover {
+      opacity: 0.7;
+    }
+
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-logo-mark {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .gallery-item:nth-child(1) { grid-row: span 1; grid-column: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      .header-nav {
+        display: none;
+      }
+      .hero {
+        min-height: auto;
+        padding: 120px 0 80px;
+      }
+      .hero-title {
+        letter-spacing: -2px;
+      }
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .stat-number {
+        font-size: 34px;
+      }
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-item:nth-child(1) { grid-row: span 1; grid-column: span 2; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      section {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">ДУ</span>
+      <span>Дети Улицы</span>
+    </a>
+    <nav class="header-nav">
+      <a href="#about">О нас</a>
+      <a href="#activities">Деятельность</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#contacts" class="btn btn-primary" style="padding:10px 22px;font-size:11px;">Связаться</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Екатеринбург · С 2022 года
+    </div>
+    <h1 class="hero-title">
+      <span>Дети</span>
+      <span class="outline">Улицы</span>
+    </h1>
+    <p class="hero-subtitle">
+      Центр досуга и спорта для трудных детей и подростков. Мы помогаем ребятам из детских домов и семей в трудной ситуации найти свой путь через футбол, волонтёрство и наставничество.
+    </p>
+    <div class="hero-actions">
+      <a href="#activities" class="btn btn-primary">
+        Узнать больше
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#contacts" class="btn btn-ghost">Поддержать</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Вниз</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="section-label">О нас</div>
+    <h2 class="section-title">Мы не делим на <span class="outline">хороших</span> и плохих</h2>
+    <p class="section-desc">Здесь один район. Здесь просто дети, которым нужен шанс.</p>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          <strong>«Дети Улицы»</strong> — автономная некоммерческая организация, основанная в феврале 2022 года в Екатеринбурге. Мы занимаемся организацией досуга и спорта для детей и подростков, оказавшихся в трудной жизненной ситуации.
+        </p>
+        <p>
+          Наша главная цель — оградить ребят от негативного влияния улицы и привить им здоровый образ жизни. Через футбол, волонтёрство и наставничество мы показываем, что есть другой путь.
+        </p>
+        <p>
+          Мы работаем с воспитанниками детских домов, подростками, состоящими на учёте в подразделении по делам несовершеннолетних, и детьми из семей в социально опасном положении.
+        </p>
+        <p>
+          <strong>Мы не делим детей на больных и здоровых, плохих и хороших. Здесь один район — и мы вместе.</strong>
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">60+</div>
+          <div class="stat-label">Турниров проведено</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2000+</div>
+          <div class="stat-label">Детей участников</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">800</div>
+          <div class="stat-label">Планируемый охват</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">На связи</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="activities" class="reveal">
+  <div class="container">
+    <div class="section-label">Деятельность</div>
+    <h2 class="section-title">Чем мы <span class="outline">занимаемся</span></h2>
+    <p class="section-desc">Спорт, досуг и реальная помощь — три опоры нашей работы.</p>
+
+    <div class="activities-grid">
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3 12h18"/><path d="M5.6 5.6l12.8 12.8"/><path d="M18.4 5.6L5.6 18.4"/></svg>
+        </div>
+        <h3 class="activity-title">Футбольные турниры</h3>
+        <p class="activity-desc">Ежемесячно проводим бесплатные турниры по футболу среди детских домов и трудных подростков. За 6 лет — около 60 турниров и 2000 участников.</p>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="activity-title">Наставничество</h3>
+        <p class="activity-desc">Взрослые наставники помогают подросткам найти себя. Мы забираем ребят с улицы и показываем, что жизнь может быть другой.</p>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.7 6.5 19.5l1-6.3L3 8.9 9 8z"/></svg>
+        </div>
+        <h3 class="activity-title">Волонтёрство</h3>
+        <p class="activity-desc">Ребята помогают старикам: заготавливают дрова, носят воду, ремонтируют. Так подростки учатся ответственности и заботе.</p>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <h3 class="activity-title">Мастер-классы</h3>
+        <p class="activity-desc">Проводим мастер-классы, поездки в кино, экскурсии. Даём ребятам то, что многие дети получают дома — внимание и заботу.</p>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="activity-title">Профилактика</h3>
+        <p class="activity-desc">Занятия спортом снижают риск правонарушений. Подростки находятся под присмотром тренеров и проводят свободное время с пользой.</p>
+      </div>
+      <div class="activity-card reveal">
+        <div class="activity-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="activity-title">Поддержка семей</h3>
+        <p class="activity-desc">Помогаем семьям в трудной ситуации. Наша задача — чтобы ни один ребёнок не остался на улице.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery-section reveal">
+  <div class="container">
+    <div class="section-label">Галерея</div>
+    <h2 class="section-title">Как это <span class="outline">выглядит</span></h2>
+    <p class="section-desc">Моменты из жизни центра — тренировки, турниры, волонтёрство.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Фото турнира</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Тренировка</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Волонтёрство</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Поездка</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Мастер-класс</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" class="contact-section reveal">
+  <div class="container">
+    <div class="section-label">Контакты</div>
+    <h2 class="section-title">Свяжитесь <span class="outline">с нами</span></h2>
+    <p class="section-desc" style="margin:0 auto;">Готовы помочь, ответить на вопросы или принять поддержку.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-label">Адрес</div>
+        <div class="contact-value">г. Екатеринбург,<br>ул. Испытателей, 15</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="contact-label">Телефон</div>
+        <div class="contact-value"><a href="tel:+79126838777">+7 (912) 683-87-77</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:children.of.the.street.ekb@mail.ru">children.of.the.street.ekb@mail.ru</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">
+      <span class="footer-logo-mark">ДУ</span>
+      <span>Дети Улицы</span>
+    </div>
+    <div class="footer-copy">
+      © 2025 АНО «Дети Улицы». Екатеринбург.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  const header = document.querySelector('header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 100) {
+      header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
+    } else {
+      header.style.borderBottomColor = 'rgba(255, 255, 255, 0.06)';
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const text = el.textContent.trim();
+        const match = text.match(/^([\d.,]+)(.*)$/);
+        if (!match) return;
+
+        const target = parseFloat(match[1].replace(',', '.'));
+        const suffix = match[2];
+        const isFloat = match[1].includes('.') || match[1].includes(',');
+        const duration = 1600;
+        const start = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          const current = target * eased;
+          el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = text;
+          }
+        };
+
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  statNumbers.forEach(el => counterObserver.observe(el));
+</script>
+
+</body>
+</html>
